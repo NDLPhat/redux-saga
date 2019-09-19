@@ -3,6 +3,9 @@ import { withStyles } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import Grid from '@material-ui/core/Grid';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as taskActions from '../../actions/task';
 import styles from './styles';
 import { STATUS } from '../../constants';
 import TaskList from '../../components/TaskList';
@@ -34,13 +37,17 @@ class Dashboard extends Component {
     open: false,
   };
 
+  componentDidMount() {
+    const { taskActionCreators } = this.props;
+    const { fetchListTask } = taskActionCreators;
+    fetchListTask();
+  }
+
   renderBoard = () => {
     return (
       <Grid container spacing={2}>
         {STATUS.map(status => {
-          const taskFilter = listTask.filter(
-            task => task.status === status.value,
-          );
+          const taskFilter = listTask.filter(task => task.status === status.value);
           return <TaskList taskFilter={taskFilter} status={status} />;
         })}
       </Grid>
@@ -69,12 +76,7 @@ class Dashboard extends Component {
     console.log(classes);
     return (
       <div className={classes.dashBoard}>
-        <Button
-          variant='contained'
-          color='primary'
-          className={classes.button}
-          onClick={this.openForm}
-        >
+        <Button variant='contained' color='primary' className={classes.button} onClick={this.openForm}>
           <AddIcon /> Thêm mới công việc
         </Button>
         {this.renderBoard()}
@@ -84,4 +86,19 @@ class Dashboard extends Component {
   }
 }
 
-export default withStyles(styles)(Dashboard);
+const mapStateToProps = state => {
+  return {};
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    taskActionCreators: bindActionCreators(taskActions, dispatch),
+  };
+};
+
+export default withStyles(styles)(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(Dashboard),
+);

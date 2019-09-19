@@ -22,20 +22,13 @@ class TaskItem extends Component {
               <Typography component='h2'>{task.title}</Typography>
             </Grid>
             <Grid item md={4}>
-              <Typography component='h2'>
-                {STATUS[status.value].label}
-              </Typography>
+              <Typography component='h2'>{STATUS[status.value].label}</Typography>
             </Grid>
           </Grid>
           <p>{task.description}</p>
         </CardContent>
         <CardActions className={classes.cardActions}>
-          <Fab
-            color='primary'
-            aria-label='add'
-            className={classes.fab}
-            size='small'
-          >
+          <Fab color='primary' aria-label='add' className={classes.fab} size='small'>
             <AddIcon />
           </Fab>
           <Fab aria-label='delete' className={classes.fab} size='small'>

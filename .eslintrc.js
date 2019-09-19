@@ -39,6 +39,7 @@ module.exports = {
     'no-var': 0,
     'react/jsx-closing-bracket-location': 1,
     'react/jsx-max-props-per-line': 1,
+    'class-methods-use-this': 0,
     // 'react/jsx-uses-vars': 2,
   },
   plugins: ['prettier'],
