@@ -35,7 +35,9 @@ module.exports = {
     'import/prefer-default-export': 0,
     'no-unused-vars': 0,
     'prettier/prettier': ['error'],
-    'react/jsx-uses-vars': 2,
+    'vars-on-top': 0,
+    'no-var': 0,
+    // 'react/jsx-uses-vars': 2,
   },
   plugins: ['prettier'],
   env: {
