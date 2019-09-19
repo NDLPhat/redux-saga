@@ -37,6 +37,8 @@ module.exports = {
     'prettier/prettier': ['error'],
     'vars-on-top': 0,
     'no-var': 0,
+    'react/jsx-closing-bracket-location': 1,
+    'react/jsx-max-props-per-line': 1,
     // 'react/jsx-uses-vars': 2,
   },
   plugins: ['prettier'],
